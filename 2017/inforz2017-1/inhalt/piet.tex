@@ -1,0 +1,81 @@
+\artikel{Esoterische Programmiersprachen - Teil 1: Piet}
+{Dies ist der erste Artikel einer Reihe über esoterische Programmiersprachen.\\
+Aber was ist das eigentlich?\\
+Esoterische
+Programmiersprachen sind nicht zum praktischen Gebrauch bestimmt, die Ziele
+mit denen diese entwickelt werden sind aber recht unterschiedlich.\\
+Bei der
+Programmiersprache \glqq{}Brainfuck\grqq{}, die vermutlich recht viele kennen, war die Prämisse
+eine turingvollständige Sprache zu entwickeln, die mit einem möglichst kleinen
+Compiler auskommt. \glqq{}Whitespace\grqq{} degegen soll beim Ausdruck des
+Sourcecodes möglichst wenig Tinte bzw. Toner verbrauchen.}
+{Die Programmiersprache, die ich heute vorstelle heißt \glqq{}Piet\grqq{}, benannt nach dem
+Künstler Piet Mondrian. Ihr Ziel ist es gängigen Mondrian Bildern (s.
+Abb 1) möglichst nahe zu kommen.
+\bildmitunterschrift{grafik/piet_bild.jpg}{width=.75\columnwidth}{\small{}Composition
+with Red, Yellow and Blue}{Piet Mondrian}
+ Ihr fragt euch vielleicht, wie eine Programmiersprache (bzw. ein in ihr geschriebenes Programm) einem abstrakten
+Gemälde ähneln soll.
+Nun, in Piet geschriebene Programme sind ebenfalls Bilder.
+Abbildung 2 zeigt ein Piet Programm, welches das Wort \glqq{}Piet\grqq{} ausgibt und auf
+dem Umschlag ist ein Programm abgebildet, welches das Wort \glqq{}Inforz\grqq{}
+erzeugt.
+\bildmitunterschrift{grafik/piet-program.png}{width=.75\columnwidth}{\glqq{}Piet\grqq}{Thomas
+Schoch}~\\
+
+Im nachfolgenden werde ich die grundlegenden Konzepte erläutern:\\
+
+Ein Programm wird aus den Farben Rot, Gelb, Grün, Cyan, Blau und Magenta
+  in jeweils drei Helligkeitsstufen Hell, Normal und Dunkel, sowie aus den
+  Farben Weiß und Schwarz zusammengesetzt.\\
+
+Ein zusammenhängender Block von Pixeln einer Farbe wird \glqq{}Colour Block\grqq{}
+  genannt.\\
+
+Zur Programm Ausführung werden zwei Zeiger verwendet: Der \glqq{}Direction Pointer\grqq{}
+  (DP)
+  zeigt nach oben, unten, links oder rechts, während der \glqq{}Codel Chooser\grqq{} (CC) nach
+  links oder nach rechts zeigt.
+  Die Ausführung beginnt im Block in der oberen linken Ecke mit DP=rechts und
+  CC=links
+  Für einen Ausführungsschritt wird nun zunächst die Kante des aktuellen
+  Blocks gewählt, welche sich am weitesten in Richtung des DP befindet.
+  Nun wird das Pixel ausgewählt, dass sich an dieser Kante am weitesten in
+  richtung CC (\grqq{}aus sicht des DP\grqq{}) befindet von dort wählt der Interpreter den
+  anliegenden Block, führt die Instruktion dieses Überganges aus und führt den
+  nächsten Schritt aus.\\
+
+Instruktionen sind die Übergänge zwischen zwei verschiedenfarbigen Blöcken.
+  So wird zum Beispiel bei einem Übergang zu einer um eine Stufe dunkleren
+  Farbe (im Kontext von Piet ist \glqq{}Hell\grqq{} eine Stufe dunkler als \glqq{}Dunkel\grqq{}, so dass
+  ein Zyklus entsteht) die Größe des Blockes von dem der Interpreter kommt auf den
+  Stack gepusht.
+  Bei einem Übergang zur nächsten Farbe (Reihenfolge wie oben, nach Magenta
+  kommt wieder Rot) werden die letzten beiden Werte vom Stack genommen addiert
+  und die Summe wieder auf den Stack gepusht.\vspace{5em}\\
+
+Wenn der Interpreter bei der Ausführung einen schwarzen Block betreten
+  müsste, oder wenn das Bild an dieser Seite zu Ende ist wird statt den neuen
+  Block auszuwählen zunächst der CC geändert und vom aktuellen Block aus erneut
+  versucht einen Schritt auszuführen. Falls dies auch schief geht, wird der DP
+  im Urzeigersinn gedreht. Diese beiden Schritte werden so oft wiederholt, bis
+  die Programmusführung fortgesetzt werden kann, oder bis der Interpreter
+  wieder im Ursprungszustand ist (nach insgesammt 8 Versuchen). In diesem Fall
+  wird das Programm beendet.\\
+
+Wenn der Interpreter einen weißen Block betritt, so wird dieser einfach
+  passiert und die Ausführung in gerader Linie am nächsten farbigen Block
+  fortgesetzt. Weder das Betreten noch das Verlassen des weißen Blockes führt
+  irgendeine Instruktion aus.\\
+
+~\\~\\
+Insgesammt ist Piet eine recht amüsante Abwechslung. Allerdings braucht man
+schon für die Entwicklung kleiner Programme unverhältnissmäßig viel Zeit
+weshalb die Programmiersprache für den alltäglichen Gebrauch eher ungeeignet
+ist.\\
+Wer sich dennoch mal an der Programmierung in Piet versuchen möchte dem
+empfehle ich sich auf \url{http://www.dangermouse.net/esoteric/piet.html}
+umzuschauen.
+
+}
+{Fabian Franke}

@@ -1,0 +1,97 @@
+% Vorlage für ein Inforz
+% Erstellt von: Tobias Otterbein, totterbein@d120.de, Stand: 31.08.2014
+% Darf beliebig für ein Inforz angepasst werden.
+\documentclass[a5paper,pagesize,twoside,fontsize=8pt,DIV=15]{scrreprt}
+\usepackage[utf8]{inputenc}
+\usepackage{paket/inforz}
+\usepackage{gensymb}
+\usepackage{framed}
+\usepackage[autostyle=true,german=quotes,english=american]{csquotes}
+\usepackage{textcomp}
+%\usepackage{todonotes}
+
+% Sprache hier einstellen
+\usepackage[ngerman]{babel}
+\usepackage{blindtext}
+
+% Auskommentieren, wenn keine Links im Inhalt benötigt werden. 4. Option sorgt für 2-seitige PDF-Ansicht
+\usepackage[colorlinks=true,linkcolor=black,urlcolor=black,pdfpagelayout=TwoColumnRight]{hyperref}
+
+% Schöne Anführungszeichen mit \enquote{[...]}
+\usepackage{csquotes}
+
+
+\begin{document}
+
+% Titelseite
+\input{inhalt/titelseite}
+
+% Vorwort
+\input{inhalt/vorwort}
+
+% Inhaltsverzeichnis
+\tableofcontents
+\vfill
+\bildmitunterschrift{grafik/wesen/wesen_inforz}{width=2.5cm}{}{}
+\newpage
+
+% Inhalt
+\phantomsection
+\addcontentsline{toc}{chapter}{Aus der Fachschaft}
+\input{inhalt/Buchaktion.tex}
+\vfill
+\bildmitunterschrift{grafik/bookstore_xkcd}{width=\textwidth}{}{xkcd.com/294}
+\vfill
+\clearpage
+\vfill
+\bildmitunterschrift{grafik/bookstore_phd}{width=\textwidth}{}{phdcomics.com/comics/archive.php?comicid=506}
+\clearpage
+\input{inhalt/ophasenfilm}
+
+\phantomsection
+\addcontentsline{toc}{chapter}{Tipps zu Buch \& Film}
+\input{inhalt/wormworld.tex}
+\clearpage
+\input{inhalt/findingDory.tex}
+\clearpage
+\input{inhalt/filmkreistippswise2016.tex}
+\clearpage
+
+\phantomsection
+\addcontentsline{toc}{chapter}{Spaß für zwischendurch}
+\input{inhalt/eta}
+\clearpage
+\input{inhalt/lieblingsspiele.tex}
+\bildmitunterschrift{grafik/board_game_xkcd}{height=4.9cm}{}{xkcd.com/1566}
+\input{inhalt/raetsel.tex}
+\clearpage
+
+\phantomsection
+\addcontentsline{toc}{chapter}{Ein wenig was nützliches}
+\input{inhalt/distributionen}
+
+\phantomsection
+\addcontentsline{toc}{chapter}{Unsere kleine Weihnachtsbäckerei}
+\input{inhalt/companionCubes}
+\input{inhalt/himbeertiramisu}
+\vfill
+\bildmitunterschrift{grafik/recipes_xkcd}{width=\textwidth}{}{xkcd.com/720/}
+\vfill
+\clearpage
+\input{inhalt/StudiumBacken.tex}
+\bildmitunterschrift{grafik/info_torte}{width=.55\textwidth}{}{Simone Schlarhorst}
+\clearpage
+
+\phantomsection
+\addcontentsline{toc}{chapter}{Über uns}
+
+
+
+
+% Impressum
+\input{inhalt/impressum}
+
+% Rückseite
+\input{inhalt/rueckseite}
+
+\end{document}

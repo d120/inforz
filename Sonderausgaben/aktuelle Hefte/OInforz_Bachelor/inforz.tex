@@ -1,0 +1,45 @@
+% Vorlage für ein Inforz
+% Erstellt von: Tobias Otterbein, totterbein@d120.de, Stand: 31.08.2014
+% Darf beliebig für ein Inforz angepasst werden.
+\documentclass[a5paper,pagesize,twoside,fontsize=8pt,DIV=15]{scrreprt}
+\usepackage[utf8]{inputenc}
+\usepackage{paket/inforz}
+
+%Klingon Font
+\newfont{\kling}{pIq scaled 1000}
+
+% € Symbol
+\usepackage{eurosym}
+\usepackage{newunicodechar}
+\newunicodechar{€}{\euro}
+
+% Sprache hier einstellen
+\usepackage[ngerman]{babel}
+
+% Auskommentieren, wenn keine Links im Inhalt benötigt werden. 4. Option sorgt für 2-seitige PDF-Ansicht
+\usepackage[colorlinks=true,linkcolor=black,urlcolor=black,pdfpagelayout=TwoColumnRight]{hyperref}
+
+\begin{document}
+% Titelseite
+\input{../inhalt/titelseite_oinforz}
+
+% Stundenplan
+\input{../inhalt/stundenplan_oinforz}
+
+% Inhaltsverzeichnis
+\tableofcontents
+
+% Inhalt
+\input{../inhalt/kapitel_willkommen_oinforz}
+\input{../inhalt/kapitel_studium_oinforz}
+\input{../inhalt/kapitel_universitaet_oinforz}
+\input{../inhalt/kapitel_freizeit_oinforz}
+\input{../inhalt/kapitel_nachschlagen_oinforz}
+
+% Impressum
+\input{../inhalt/impressum_oinforz}
+
+% Rückseite
+\input{../inhalt/rueckseite_oinforz}
+
+\end{document}
