@@ -1,0 +1,963 @@
+% METAFONT for "Okuda" orthography of pIqaD (Klingon language)
+% By Mark Shoulson (shoulson@ctr.columbia.edu), modified by Olaf Kummer
+% (kummer@informatik.uni-hamburg.de).  This file may be freely
+% distributed, provided this header and assorted comments are included,
+% blah blah blah.  Please let me know if you like it.  I'm no METAFONT
+% genius, and luckily the font is such that it probably wouldn't have
+% helped if I were.  I could have saved some time with more defines,
+% but probably not much.  Basically, this was done by squinting through
+% graph-paper at photocopier-enlarged letters and tweaking stuff with
+% the key points.  Low-tech.
+%
+% The glyphs here are (at least some of) those used by Paramount in the
+% current Star Trek movies and shows.  The sound assignments to the
+% standard romanized transliteration of tlhIngan Hol (the Klingon
+% language) as written by Marc Okrand (ref. The Klingon Dictionary,
+% ISBN 0-671-74559-X) were made by... someone.  I'm not sure if it
+% was someone at Paramount or Dr. Lawrence Schoen at the Klingon
+% Language Institute (P.O. Box 634, Flourtown, PA 19031-0634 USA)
+%
+% I haven't managed to clear up the strange path errors at all
+% resolutions; it works most of the time, and when it does error
+% just hitting enter (or setting turningcheck:=0) usually works.
+%
+% Too bad the spacing is so lousy...
+
+mode_setup;
+if unknown u#:
+ 14u#=10pt#;    % Letters were 14 squares high on graph paper, and 10pt
+                % seemed a nice round number.
+fi
+define_pixels(u);
+font_slant 0u#;
+font_normal_space 13u#;
+font_normal_stretch 5u#;
+font_normal_shrink 2u#;
+font_x_height 14u#;
+font_quad 18u#;
+font_extra_space 10u#;
+design_size=15pt#;
+
+pickup pencircle scaled .1u; piqpen:=savepen; % just for a little thickness.
+
+beginchar("a",15u#,14u#,0pt#); "Klingon a";
+
+pickup piqpen;
+z1=(15u,14u);
+y2=y1; x2+5.7u=x1;
+z3=(.7u,2.7u);
+z2.3=(4.6u,7u);
+z4=(x1,-.2u);
+z3.4=(11.5u,2.4u);
+z5=(13.1u,6.8u);
+z4.5=(7.2u,6u);
+z4.5.1=(10u,5u);
+z5.1=(9.5u,10.7u);
+labels(1,2,3,4,5,2.3,3.4,4.5,4.5.1,5.1);
+filldraw z1--z2&flex(z2,z2.3,z3)&z3{right}...{z4-z3}z3.4...z4&
+	z4{z5-z4}..z4.5.1..{z5-z4}z4.5...{right}z5&
+	z5{dir 175}...{z1-z5}z5.1...{dir 5}z1..cycle;
+endchar;
+
+
+beginchar("b",14u#,14u#,0u#); "Klingon b";
+
+pickup piqpen;
+z1=(.5u,10.7u);
+z2=(3.7u,14.2u);
+z1.2=(2.5u,12.5u);
+z3=(5u,13.7u);
+z3.4=(7u,11.7u);
+z3.4.4=(10.8u,13.3u);
+z4=(w,w);
+z5=(12u,-.2u);
+z4.5=(9u,9u);
+z6=(3.7u,7.7u);
+z5.6=(5u,9.2u);
+z5.6.1=(8u,5u);
+z7=(2.5u,7.6u);
+z7.1=(2u,9u);
+labels(1,2,3,4,5,6,7,1.2,3.4,4.5,5.6,5.6.1,7.1,3.4.4);
+
+filldraw flex(z1,z1.2,z2)--z3{dir -60}...z3.4{z4-z3}...z3.4.4...{right}z4&
+	flex(z4,z4.5,z5)&z5..z5.6.1...{left}z5.6...z6--
+	flex(z7,z7.1,z1)..cycle;
+
+endchar;
+
+beginchar("C",15u#,14u#,0u#); "Klingon ch";
+
+pickup piqpen;
+z1=(0u,3u);
+z2=(4.3u,h);
+z1.2=(2.1u,8.5u);
+z2.3=(10u,6.2u);
+z2.2.3=(7u,9u);
+z3=(w+.1u,h);
+z3.4.1=(w,4u);
+z3.4.2=(10u,-.6u);
+z4=(4.2u,1.2u);
+z4.5.1=(9u,1u);
+z4.5.2=(11.8u,3u);
+z5=(7.1u,4.5u);
+z5.1=(6u,7.1u);
+labels(1,2,3,4,5,1.2,2.3,2.2.3,3.4.1,3.4.2,4.5.1,4.5.2,5.1);
+
+filldraw flex(z1,z1.2,z2)&z2{z2.3-(x2+3u,y2)}..{z2.3-z2}z2.2.3..
+	{right}z2.3...{dir 80}z3&
+	z3{dir 265}..{down}z3.4.1..{left}z3.4.2..z4&
+	z4..{right}z4.5.1..{up}z4.5.2..{dir 185}z5&
+	z5{up}..{left}z5.1..z1..cycle;
+endchar;
+
+beginchar("D",12u#,14u#,0u#); "Klingon D";
+
+pickup piqpen;
+rt z1=(4u,0u);
+z2=(x1,2u);
+z2.3=(2.2u,2.5u);
+z3=(4u,7.7u);
+z3.3.1=(3.2u,6u);
+z3.1=(.6u,1.7u);
+filldraw z1--z2{left}..{up}z2.3..{up}z3&
+	z3..z3.3.1..{down}z3.1..{right}z1..cycle;
+z4=(5.3u,.3u);
+z5=(x4,1.7u);
+z5.6.1=(9u,4u);
+z5.6.2=(3.2u,12.3u);
+z6=(3.5u,14u);
+z7=(4u,13.8u);
+z7.7.4=(7u,9u);
+z7.4=(12.3u,3.6u);
+labels(1,2,3,4,5,6,7,2.3,5.6.1,5.6.2,7.7.4,7.4);
+
+filldraw z4--z5{right}...{up}z5.6.1..{up}z5.6.2..z6&
+	z6{z7-z6}...z7{dir 280}..{z7.4-z7}z7.7.4..tension 1 and 3..
+	{down}z7.4..tension 3 and 1..{dir 185}z4..cycle;
+endchar;
+
+beginchar("e",9u#,14u#,0u#); "Klingon e";
+
+pickup piqpen;
+z1=(1u,0u);
+z2=(2.8u,2.4u);
+z2.3=(2u,5u);
+z3=(3u,11.3u);
+z3.4=(6u,11.8u);
+z4=(9.1u,11.7u);
+z5=(9.2u,h);
+z6=(0,h);
+z6.1=(0,7u);
+labels(1,2,3,4,5,6,2.3,3.4,6.1);
+
+filldraw z1--z2..{up}z2.3..z3&
+	z3..{right}z3.4..z4--z5--z6&
+	z6..tension 10..z6.1..{down}z1..cycle;
+endchar;
+
+beginchar("G",17u#,14u#,0u#); "Klingon gh";
+
+pickup piqpen;
+z1=(0,-.2u);
+z1.2=(3u,2.1u);
+z2=(7.3u,4u);
+z3=(9u,11.6u);
+z4=(6u,12.5u);
+z5=(5u,h);
+z6=(14.8u,y5);
+z7=(16.7u,12u);
+z8=(11.7u,11.7u);
+z9=(10.3u,4.1u);
+z10=(16.4u,2u);
+z10.1=(12u,2.6u);
+labels(1,2,3,4,5,6,7,8,9,10,1.2,10.1);
+
+filldraw z1..z1.2..z2--z3--z4--z5--z6--z7{left}..z8--z9&
+	z9{right}..z10&z10..{left}z10.1..z1..cycle;
+endchar;
+
+beginchar("H",8u#,14u#,0u#); "Klingon H";
+
+pickup piqpen;
+z1=(0u,10u);
+z2=(4u,h);
+z4=(7.3u,10.2u);
+z4.5=(4u,4.5u);
+z5=(5.8u,0u);
+z5.1=(2u,4u);
+filldraw z1..tension 4..z2..tension 4..z4&
+	z4..tension 2.5..{down}z4.5..tension 1.5..z5&
+	flex(z5,z5.1,z1)&z1..cycle;
+cullit;
+z6=(1.8u,10.2u);
+z7=(5.6u,11u);
+z8=(4.1u,7.8u);
+z9=(2u,7.1u);
+unfill z6..tension 5..{right}z7..tension 5..
+	z8..tension 5..z9..tension 7..cycle;
+labels(1,2,3,4,5,6,7,8,9,5.1);
+
+endchar;
+
+beginchar("I",12u#,14u#,0u#); "Klingon I";
+
+pickup piqpen;
+z1=(11u,0u);
+z2=(7.5u,1.5u);
+z3=(.5u,9.8u);
+z4=(2.5u,h);
+z5=(6u,h);
+z6=(3.1u,10.7u);
+z7=(7u,8.6u);
+z8=(9u,11.2u);
+z9=(8.1u,h);
+z10=(11.7u,h);
+z11=(w,11u);
+z12=(7.5u,5.5u);
+labels(1,2,3,4,5,6,7,8,9,10,11,12);
+
+filldraw z1..tension 3..z2..tension 4..z3..tension 4..z4--z5&
+	z5..tension 2..z6{down}..tension 2 and 1..
+	z7{right}..z8{up}..z9--z10..tension 4..z11..tension 3..
+	z12..tension 2..{dir -45}z1..cycle;
+endchar;
+
+beginchar("j",13u#,14u#,0u#); "Klingon j";
+
+pickup piqpen;
+z1=(.5u,.5u);
+z2=(1.5u,11.6u);
+z1.2=(4.5u,8.5u);
+z3=(4.2u,h);
+z3.4=(7.5u,y4);
+z4=(w,13u);
+z4.5=(11.8u,7u);
+z5=(9u,2u);
+z5.6=(10u,8.6u);
+z6=(8.2u,10.3u);
+z6.1=(5u,5.5u);
+z6.1.1=(2.6u,2u);
+labels(1,2,3,4,5,6,1.2,3.4,4.5,5.6,6.1,6.1.1);
+
+filldraw z1..{up}z1.2..{left}z2--z3..z3.4---z4&
+	z4{down}..z4.5..z5&
+	z5..{up}z5.6..{left}z6.. %{z1-z6}
+	z6.1..
+	z6.1.1..z1..cycle;
+endchar;
+
+beginchar("l",10u#,14u#,0u#); "Klingon l";
+
+pickup piqpen;
+z1=(0u,2u);
+z1.2.1=(2.5u,2.1u);
+z1.2.2=(5.5u,2u);
+z2=(w,-.3u);
+z2.3=(8.3u,3u);
+z3=(4.6u,4.4u);
+z4=(6.7u,9.8u);
+z5=(w-.2u,10.2u);
+z6=(6.7u,h);
+labels(1,2,3,4,5,6,1.2.1,1.2.2,2.3);
+
+filldraw z1..z1.2.1{right}..z1.2.2..z2&
+	z2..z2.3..z3--z4--z5--z6--z1..cycle;
+endchar;
+
+beginchar("m",10u#,14u#,0u#); "Klingon m";
+
+pickup piqpen;
+z1=(0u,10u);
+z1.2=(2.7u,11.4u);
+z2=(5.5u,h);
+z2.3=(7u,13.2u);
+z3=(w,10.1u);
+z4=(7u,3.7u);
+z5=(7.8u,7.5u);
+z6=(6.2u,10.3u);
+z7=(3.9u,7.5u);
+z8=(7.2u,-.1u);
+labels(1,2,3,4,5,6,7,8,1.2,2.3);
+
+filldraw flex(z1,z1.2,z2)&flex(z2,z2.3,z3)&
+	z3{down}..z4&
+	z4..{up}z5..{left}z6..{down}z7..z8&z8..{up}z1..cycle;
+endchar;
+
+beginchar("n",12u#,14u#,0u#); "Klingon n";
+
+pickup piqpen;
+z1=(w,-.3u);
+z2=(7.6u,0u);
+z3=(0u,9.4u);
+z4=(5.3u,h);
+z5=(9u,11.3u);
+z6=(8u,10.8u);
+z6.7=(5.1u,11u);
+z7=(3u,9u);
+z8=(8.8u,9u);
+z9=(10u,7u);
+z10=(6u,6u);
+z10.1=(8.5u,2.4u);
+labels(1,2,3,4,5,6,7,8,9,10,6.7,z10.1);
+
+filldraw z1--z2..tension 4..z3..tension 4..z4..tension 3.5..z5--z6{left}
+	..{left}z6.7...{z3-z4}z7--z8--z9{left}...{down}z10..z10.1..
+	z1..cycle;
+endchar;
+
+beginchar("N",16u#,14u#,0u#); "Klingon ng";
+
+pickup piqpen;
+z1=(0u,h+.2u);
+z1.2=(10u,h-.1u);
+z2=(w-1.1u,h+.2u);
+z3=(w,h-1);
+z4=(14.2u,8.3u);
+z5=(11.6u,12u);
+z6=(10u,10.4u);
+z7=(10.6u,8.8u);
+z8=(6.3u,6.6u);
+z9=(11.3u,0u);
+z10=(2u,6.6u);
+z11=(5u,10.7u);
+labels(1,2,3,4,5,6,7,8,9,10,11,1.2);
+
+filldraw z1..{right}z1.2..{right}z2..z3---z4&
+	z4{up}..{left}z5..{down}z6..z7&
+	z7{left}..tension 2 and 1..{down}z8..tension 1 and 2..z9&
+	z9..tension 3 and 2..{up}z10..tension 2 and 1..z11..tension 1.5..
+	{curl 0}z1..cycle;
+endchar;
+
+beginchar("o",13u#,14u#,0u#); "Klingon o";
+
+pickup piqpen;
+z1=(-.3u,h+.3u);
+z1.2=(6.7u,h-.2u);
+z2=(w-1u,h+.1u);
+z3=(w,h-3.2u);
+z4=(w-1.1u,h-3u);
+z5=(w-1.8u,h-3.6u);
+z6=(w-.5u,h-6.3u);
+z7=(w-4u,5u);
+z8=(w-1u,0u);
+z9=(6.1u,y7);
+z10=(8.4u,9.5u);
+z10.1=(2u,h-1.2u);
+labels(1,2,3,4,5,6,7,8,9,10,1.2,10.1);
+
+filldraw z1..z1.2...{curl 8}z2--z3..{left}z4..{down}z5..{curl 0}z6&
+	z6..tension 2..{down}z7..tension 2..z8&
+	z8..tension 2 and 1..{up}z9..{up}z10..{z1-z10}z10.1..z1..cycle;
+endchar;
+
+beginchar("p",10u#,14u#,0u#); "Klingon p";
+
+pickup piqpen;
+z1=(0,0);
+z2=(w-.5u,8u);
+z3=(4.5u,10.9u);
+z4=(4.1u,h+.2u);
+z4.5=(2.3u,h-4u);
+z5=(.2u,7.5u);
+z6=(4.4u,9.3u);
+z7=(6.5u,7.1u);
+labels(1,2,3,4,5,6,7,4.5);
+
+filldraw z1..tension 2 and 1..{up}z2..{left}z3&
+	z3--z4..{z5-z4}z4.5..z5&
+	z5{z3-z5}..{right}z6..{down}z7..tension 1 and 2..z1..cycle;
+endchar;
+
+beginchar("q",6u#,14u#,0u#); "Klingon q";
+
+pickup piqpen;
+z1=(0,9u);
+z1.2=(3.3u,11.9u);
+z2=(4.5u,13.7u);
+z2.3=.5[z2,z3]+(0,.1u);
+z3=(6.3u,11.3u);
+z4=(4.3u,9.2u);
+z5=(5.9u,5.2u);
+z6=(4.1u,0);
+z6.1=(3.6u,5.5u);
+labels(1,2,3,4,5,6,1.2,2.3,6.1);
+
+filldraw flex(z1,z1.2,z2)&flex(z2,z2.3,z3)--z4&
+	z4..{down}z5..z6&
+	z6{up}..z6.1..z1..cycle;
+endchar;
+
+beginchar("Q",10u#,14u#,0u#); "Klingon Q";
+
+pickup piqpen;
+z1=(.2u,0u);
+z2=(3u,4.5u);
+z3=(0u,7.3u);
+z4=(5u,12.9u);
+z3.4=.4[z3,z4]+(0,-.1u);
+z5=(w,h+.4u);
+z6=(4.4u,8u);
+z7=(5.4u,5.5u);
+labels(1,2,3,4,5,6,7,3.4);
+
+filldraw z1..{up}z2..{left}z3&
+	flex(z3,z3.4,z4)&
+	z4{right}..z5&
+	z5{(z6+(2.2u,0))-z5}..tension 1 and 2..z6&
+	z6..{down}z7..z1..cycle;
+endchar;
+
+beginchar("r",12u#,14.4u#,0u#); "Klingon r";
+
+pickup piqpen;
+z1=(0u,1u);
+z2=(5.9u,10u);
+z3=(-.3u,h);
+z3.4=3/4[z3,z4]+(0,-.15u);
+z4=(11u,h);
+z5=(w,12.4u);
+z6=(9.2u,y5);
+z7=(9.6u,9.95u);
+z8=(w,10.2u);
+%z9=z1+(.1u,0);
+%z8.1=1/4[z8,z1]+(0,.2u);
+labels(1,2,3,4,5,6,7,8,3.4,8.1);
+
+% must shift z3 by -epsilon to avoid strange path.
+filldraw z1{curl 0}..tension 4..z2..tension 4..z3+(0,-epsilon)--
+	z3..{right}z3.4..z4--z5&
+	z5{dir 165}..tension 2..z6..tension 2..z7..tension 2..{dir 20}z8&
+	z8--z1..cycle;
+endchar;
+
+beginchar("S",15u#,14u#,0u#); "Klingon S";
+
+pickup piqpen;
+z1=(0u,0u);
+z2=(4.9u,9u);
+z3=(3.3u,h+.2u);
+z4=(8.2u,12.4u);
+z4.5=(11.5u,13u);
+z5=(12.2u,13u);
+z6=(7.2u,6.9u);
+z6.7=(12u,2u);
+z7=(w,0u);
+z8=(7.2u,1.7u);
+labels(1,2,3,4,5,6,7,8,4.5);
+
+filldraw z1..{up}z2..z3&
+	z3..{right}z4..z4.5---z5&
+	z5..{down}z6..z6.7..z7&
+	z7..{left}z8..z1..cycle;
+endchar;
+
+beginchar("t",13u#,14u#,0u#); "Klingon t";
+
+pickup piqpen;
+z1=(0u,0u);
+z2=(3.2u,9.2u);
+z3=(3u,6.6u);
+z4=(4.5u,4.9u);
+z4.5=(11.5u,13.1u);
+z5=(w+.1u,h+.2u);
+z6=(w-.9u,9.3u);
+z7=(w+.1u,5.2u);
+labels(1,2,3,4,5,6,7,4.5);
+
+filldraw z1{up}..z2&
+	z2..{down}z3..{right}flex(z4,z4.5,z5)&
+	z5..{down}z6..z7&
+	z7{left}..z1..cycle;
+endchar;
+
+beginchar("T",13u#,14u#,0u#); "Klingon tlh";
+
+pickup piqpen;
+z1=(11u,-.2u);
+z2=(6.4u,5u);
+z3=(w,h);
+z4=(8.3u,h+.1u);
+z5=(9.4u,12.7u);
+z6=(5.5u,8.7u);
+z7=(4.95u,9.3u);
+z8=(5u,12u);
+z9=(6.2u,h);
+z10=(4.7u,h+.2u);
+z11=(-.3u,11.9u);
+z12=(.2u,11.2u);
+z13=(2.3u,11.8u);
+z14=(3.2u,10u);
+z15=(1.3u,6.2u);
+z16=(5.9u,0u);
+labels(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16);
+
+filldraw z1..tension 1.5..{up}z2..tension 1.5 and 2..{up}z3&
+	z3{left}..{left}z4&
+	z4{down}..{down}z5..{left}z6..
+	z7---z8..{right}z9&
+	z9{left}..tension 2..{left}z10..tension 2..{left}z11&
+	z11..{right}z12..{right}z13..{down}z14..tension 1 and 2..
+	z15..tension 2..z16--cycle;
+
+endchar;
+
+beginchar("u",14u#,14u#,0u#); "Klingon u";
+
+pickup piqpen;
+z1=(0u,0u);
+z1.2=3/4[z1,z2]+(0,.4u);
+z2=(10.2u,h+.2u);
+z3=(9.95u,12.3u);
+z4=(10.4u,10.1u);
+z5=(9.1u,10.3u);
+z6=(5.9u,6.2u);
+z7=(6.7u,5.9u);
+z8=(11.7u,8.6u);
+z8.9=(13u,6.7u);
+z9=(14.3u,5.9u);
+labels(1,2,3,4,5,6,7,8,9,8.9);
+
+filldraw z1..z1.2..z2&
+	z2..{down}z3..z4&
+	%z4..{left}z5..tension 3..z6{down}..
+	{dir 170}z4{curl 2}..tension 2..z6{down}..
+	{right}z7..{curl 2}z8&
+	z8..tension 2..{z9-z8}z8.9..tension 2..z9&
+	z9{left}..tension 1.5..z1..cycle;
+endchar;
+
+beginchar("v",16u#,14u#,0u#); "Klingon v";
+
+pickup piqpen;
+z1=(-.3u,-.3u);
+z2=(0u,1u);
+z3=(0u,5.1u);
+z4=(1.7u,8.6u);
+z5=(5u,5.05u);
+z6=(9.6u,5.7u);
+z6.7=(11u,9u);
+z7=(w+.1u,h+.2u);
+z8=(13.3u,6.6u);
+z9=(14.9u,.1u);
+z10=(14.2u,0u);
+z11=(9u,3u);
+z12=(1.9u,2u);
+z12.1=(1u,.4u);
+labels(1,2,3,4,5,6,7,8,9,10,11,12,12.1);
+
+filldraw z1..z2---z3..z4&
+	z4{down}..z5{right}..tension 1 and 3..z6&
+	z6..z6.7..z7&
+	z7..z8{down}..z9&
+	z9..{left}z10..tension 1 and 3..z11&
+	z11..tension 4..z12..tension 3..{z1-z12}z12.1..z1..cycle;
+endchar;
+
+beginchar("w",13u#,14u#,0u#); "Klingon w";
+
+pickup piqpen;
+z1=(5.5u,-.2u);
+z2=(2.95u,9.9u);
+z2.3=(11u,13u);
+z3=(12.8u,h+.2u);
+z4=(10u,h);
+z5=(0u,h);
+labels(1,2,3,4,5,2.3);
+
+filldraw z1..tension 3 and 1..{up}z2..{z3-z2}z2.3..z3&
+	z3..z4---z5&
+	z5{down}..z1..cycle;
+endchar;
+
+beginchar("y",13u#,14.2u#,0u#); "Klingon y";
+
+pickup piqpen;
+z1=(w,0u);
+z2=(10.3u,5.1u);
+z3=(w+.1u,h);
+z4=(5.7u,h);
+z5=(.3u,8.5u);
+labels(1,2,3,4,5);
+
+filldraw z1..tension 3 and 1..{up}z2..tension 1 and 3..z3&
+	z3---z4..{down}z5..tension 4..z1..cycle;
+
+cullit;
+z6=(4.7u,9.5u);
+z7=(7.5u,12.3u);
+z8=(8.4u,12u);
+z9=(7.8u,10u);
+z10=(7.8u,7.2u);
+z11=(7u,6.7u);
+labels(6,7,8,9,10,11);
+
+unfill z6{up}..{right}z7..{down}z8..z9---z10..{left}z11..tension 1.5..cycle;
+endchar;
+
+beginchar("'",3u#,14u#,0u#); "Klingon '";
+
+pickup piqpen;
+z1=(.6u,h);
+z2=(w,h-2.3u);
+z3=(1.9u,h-5.7u);
+z4=(w-.1u,h-7.2u);
+z5=(1.9u,h-7.8u);
+z6=(0u,h-4.8u);
+z7=(1.4u,h-1.7u);
+labels(1,2,3,4,5,6,7);
+
+filldraw z1..{down}z2..{down}z3..z4--z5..tension 7 and 1..
+	{up}z6..{up}z7..z1..cycle;
+endchar;
+
+beginchar("0",13u#,14u#,0u#); "Klingon numeral 0";
+
+pickup piqpen;
+
+%% Alternate one.  Better?
+%pickup piqpen;
+%fill (0,h/2){curl 10}..{right}(w/2,h/2+1.55u)..{curl 10}(w,h/2)&
+%	(w,h/2){curl 10}..{left}(w/2,h/2-1.55u)..{curl 10}(0,h/2)..cycle;
+%endchar;
+%
+%% none of these are all that great, I fear.  It's a simple enough shape, tho.
+
+filldraw fullcircle xscaled w yscaled 3.1u shifted (w/2,7u);
+endchar;
+
+
+beginchar("1",15u#,14u#,0u#); "Klingon numeral 1";
+
+pickup piqpen;
+z1=(0u,0u);
+z2=(3.5u,11.8u);
+z3=(w,h);
+z4=(4.3u,9u);
+labels(1,2,3,4);
+
+filldraw z1..tension 3..z2..tension 3..z3&
+	z3..tension 2..{z1-z3}z4..tension 2..z1&
+	z1..cycle;
+endchar;
+
+beginchar("2",6u#,14u#,0u#); "Klingon numeral 2";
+
+pickup piqpen;
+z1=(5u,0u);
+z2=(2.2u,7.5u);
+z3=(w,h);
+z4=(0u,y2);
+labels(1,2,3,4);
+
+filldraw z1..tension 3 and 1..{up}z2..tension 1 and 3..z3&
+	z3..tension 3 and 1..{down}z4..tension 1 and 3..z1..cycle
+endchar;
+
+beginchar("3",11u#,14u#,0u#); "Klingon numeral 3";
+
+pickup piqpen;
+z1=(w,0u);
+z2=(5.6u,5.7u);
+z3=(10u,9.4u);
+z4=(5u,8.5u);
+z5=(3.5u,10u);
+z6=(5u,h);
+z7=(.3u,8.8u);
+labels(1,2,3,4,5,6,7);
+
+filldraw z1..tension 3 and 1..{up}z2..tension 1 and 3..z3--
+	z3+(0,eps)..tension 4 and 1..{left}z4..{up}z5..z6&
+	z6..tension 2 and 1..{down}z7..tension 1 and 3..z1..cycle;
+endchar;
+
+beginchar("4",14u#,14u#,0u#); "Klingon numeral 4";
+
+pickup piqpen;
+z1=(-.2u,5u);
+z2=(4.7u,2.7u);
+z3=(7.3u,4u);
+z4=(2u,h);
+z5=(w,0u);
+z6=(2.2u,0u);
+labels(1,2,3,4,5,6);
+
+filldraw z1..{right}z2..z3---z4--z5---z6..tension 7..z1..cycle;
+
+z7=(13.8u,14.1u);
+z8=(12.6u,14u);
+z9=(4.7u,12.4u);
+z10=(7.7u,9.5u);
+z11=(7.6u,10u);
+labels(7,8,9,10,11);
+
+filldraw z7..{left}z8..z9--z10&
+	z10..{up}z11..tension 2..{z7-z10}z7..cycle;
+endchar;
+
+beginchar("5",8u#,14u#,.5u#); "Klingon numeral 5";
+
+pickup piqpen;
+z1=(5.2u,-.5u);
+z2=(4.3u,2.8u);
+z3=(7.5u,6.5u);
+z4=(6u,6u);
+%z5=(4.9u,6.5u);
+z5=1.75[.5[z3,z7],.5[z4,z6]];
+z7=(7.1u,8.6u);
+z7-z6=z3-z4;
+z8=(4u,8u);
+z9=(2.9u,9u);
+z10=(6.7u,h);
+z11=(.5u,12.7u);
+z12=(0u,11u);
+labels(1,2,3,4,5,6,7,8,9,10,11,12);
+
+%draw z1..tension 3 and 1..{up}z2..tension 1 and 3..z3&
+%	z3---z4..{curl 4}z5{up}..z6---z7&
+%	z7..tension 5 and 1..{left}z8..{up}z9..tension 1..z10&
+%	z10{left}..z11..{down}z12..tension 2..z1..cycle;
+
+filldraw z1..tension 3 and 1..{up}z2..tension 1 and 3..z3&
+	{z4-z3}z3..tension 2 and 1..z5{up}..tension 1 and 2..z7{z3-z4}--
+	z7+(0,eps)..tension 3 and 1..{left}z8..
+	{up}z9..tension 1..{right}z10&
+	z10{left}...z11..{down}z12..tension 2..z1..cycle;
+
+endchar;
+
+beginchar("6",14u#,13u#,0u#); "Klingon numeral 6";
+
+pickup piqpen;
+z1=(11.6u,0u);
+z1.1=(12.3u,5.5u);
+z1.2=(13.5u,8u);
+z2=(14u,11u);
+z3=(7.6u,9.1u);
+z4=(-.4u,h);
+z5=(1.7u,6u);
+z6=(1.2u,2.2u);
+z6.7=(4u,7u);
+z7.1=(9u,7u);
+z7=(6.6u,7.3u);
+labels(1,2,3,4,5,6,7,1.1,1.2,6.7,7.1);
+
+filldraw z1{up}..tension 1..z1.1..z1.2..tension 1..{up}z2&
+	z2..{left}z3..z4&
+	z4{curl 0}..{down}z5..{curl 0}z6--
+	(z6+(eps,0))..tension 2 and 1..z6.7..{right}z7..z7.1..
+	tension 1 and 2..{dir -80}z1..cycle;
+endchar;
+
+beginchar("7",11u#,14u#,.2u#); "Klingon numeral 7";
+
+pickup piqpen;
+z1=(w+.2u,-d);
+z1.2=(8.1u,7u);
+z2=(w-.1u,h);
+z2.1=(8u,12u);
+z2.3=(6u,10.5u);
+z3=(3.4u,12u);
+z4=(0u,9u);
+z5=(3u,9.4u);
+z6=(3.9u,8.6u);
+z7=(3.3u,6.5u);
+z8=(3.4u,6u);
+z9=(5u,7u);
+z9.1=(6.5u,5.5u);
+labels(1,2,3,4,5,6,7,8,9,1.2,2.3,2.1,9.1);
+
+filldraw z1..{up}z1.2..z2&
+	z2{z2.3-z2}..{left}z2.3..z3--z4&
+	z4..{right}z5..{down}z6..z7--z8&
+	z8..{right}z9..z9.1..z1..cycle;
+endchar;
+
+beginchar("8",16u#,14u#,0u#); "Klingon numeral 8";
+
+pickup piqpen;
+z1=(w/2,1u);
+z2=(5u,.5u);
+z3=(6.1u,2.5u);
+z4=(4.7u,3u);
+z4.5=(2u,1u);
+z5=(0u,0u);
+z5.6=(2u,1.8u);
+z6=(4u,h/2);
+labels(1,2,3,4,5,6,4.5,5.6);
+%save p;
+%path p;
+%p=z1{left}..z2&z2..{up}z3..{left}z4..z4.5..z5&z5..z5.6..{up}z6;
+%filldraw p..reverse p reflectedabout((0,y6),(w,y6))..
+%	p rotatedaround((x1,y6),180)..
+%	reverse p reflectedabout((x1,0),(x1,h))..cycle;
+%% Oops, not top/bottom symmetrical!
+z6.7=(2.5u,11.3u);
+z7=(0u,h);
+z7.8=(2.6u,13u);
+z8=(6u,9.6u);
+z9=(6.7u,9.8u);
+z10=(4.8u,13.6u);
+z11=(w/2,13.2u);
+save p; path p;
+p=z1{left}..z2&z2..{up}z3..{left}z4..z4.5..z5&z5..z5.6..{up}z6..
+	z6.7..z7&
+	z7..z7.8..{right}z8..{up}z9..z10&z10..{right}z11;
+filldraw p..reverse p reflectedabout((x1,0),(x1,h))..cycle;
+
+endchar;
+
+beginchar("9",11u#,14u#,0u#); "Klingon numeral 9";
+
+pickup piqpen;
+z1=(w/2,.1u);
+z2=(3u,-.2u);
+z3=(5.3u,6.7u);
+z4=(2.7u,9.6u);
+z5=(0u,9u);
+z5.1=(1u,10.1u);
+z5.2=(2.8u,11.2u);
+z6=(x1,h);
+labels(1,2,3,4,5,6,5.1,5.2);
+save p; path p;
+p=z1{left}..z2&z2..{up}z3..{left}z4..z5&
+	flex(z5,z5.1,z5.2,z6);
+filldraw p .. reverse p reflectedabout ((w/2,0),(w/2,h))..cycle;
+endchar;
+
+
+% Dummy characters to make the ligtable happy for TeX.
+
+for i="c","g","h":
+  beginchar(i,0u#,0u#,0u#); "Dummy character "&i;
+  endchar;
+endfor;
+
+for i=1,2,3:
+  beginchar(i,0u#,0u#,0u#); "Dummy character "&decimal i;
+  endchar;
+endfor;
+
+
+k=u#;
+kk=2u#;
+kkk=3u#;
+kkkk=4u#;
+zz=0u#;       % override later values.
+%% Better to have had the sidebars on the various letters arranged better,
+%% but that would have required actual thought, and I'm lazy.
+
+ligtable "c": "h"=:"C";
+ligtable "g": "h"=:"G";
+ligtable "n": "g"=:"N", "o" kern -kk, "I" kern -k, "a" kern -k,
+	"b" kern -k;
+ligtable "t": "e" kern kk, "G" kern -kk, "l"=:1,  % tl => tricktable 1
+	"H" kern k, "m" kern k, "n" kern k, "p" kern k, "q" kern k, 
+	"w" kern k, "y" kern k, "'" kern k;
+ligtable "N": "e" kern kk, "t" kern -k, "u" kern -k,
+	"N" kern kk, "G" kern k, 
+	"o" kern kk, "r" kern kk, "S" kern k, "'" kern kk, "w" kern kk,
+	"h"=:|3;  % Nh => tricktable 3
+ligtable "b": "a" kern -kk, "G" kern -k, "g" kern -k, 
+	"e" kern k, "N" kern kk, "G" kern k, 
+	"o" kern kk, "r" kern kk, "S" kern k, "'" kern kk, "w" kern kk;
+ligtable "C": "b" kern k, "D" kern k, "e" kern kk,
+	"N" kern k, "H" kern k, "I" kern k, "q" kern k, "l" kern k,
+	"m" kern k, "n" kern k, "o" kern k, "p" kern k, "Q" kern k, 
+	"r" kern k, "v" kern k, "w" kern k, "y" kern k, "'" kern kk;
+ligtable "D": "e" kern k, "w" kern k, "o" kern -kkk, "I" kern -kk,
+	"l" kern k, "v" kern k;
+ligtable "e": "N" kern k, "o" kern k, "r" kern k, "w" kern k, "T" kern k,
+	"'" kern k, "G" kern -k, "g" kern -k, "l" kern -k,
+	"v" kern -k;
+ligtable "G": "e" kern k, "o" kern k, "G" kern zz, "N" kern kk, "G" kern k, 
+	"o" kern kk, "r" kern kk, "S" kern k, "'" kern kk, "w" kern kk;
+ligtable "I": "'" kern kk, "r" kern k, "H" kern k, "n" kern k, "e" kern kk,
+	"N" kern k, "o" kern k, "w" kern kk, "y" kern k;
+ligtable "y": "e" kern kk, "N" kern kk, "G" kern k, 
+	"o" kern kk, "r" kern kk, "S" kern k, "'" kern kk, "w" kern kk;
+ligtable "p": "e" kern k, "y" kern k, "m" kern k, "u" kern -kk, 
+	"a" kern -k, "G" kern -kk, "j" kern -k, "o" kern -kk, 
+	"S" kern -k, "'" kern k;
+ligtable "'": "e" kern kk, "w" kern kk, "a" kern -k, "b" kern k,
+	"H" kern k, "m" kern k, "n" kern k, "N" kern k, "o" kern k, 
+	"p" kern k, "q" kern k, "Q" kern k, "r" kern k, "T" kern k,
+	"v" kern k, "y" kern k, "'" kern kk;
+ligtable "r": "e" kern kk, "w" kern k, "a" kern -kk, "G" kern -k,
+	"H" kern k, "I" kern k, "l" kern -k, "m" kern k, "n" kern k,
+	"S" kern -k, "t" kern -k, "T" kern k, "u" kern -kk, "'" kern k;
+ligtable "l": "e" kern k, "'" kern k;
+ligtable "m": "e" kern kk, "'" kern kk, "G" kern -kk, "g" kern -kk,
+	"p" kern k, "H" kern k, "y" kern k, "w" kern k, "y" kern k,
+	"a" kern -k;
+ligtable "T": "e" kern k, "a" kern -kk;
+ligtable "S": "o" kern -k, "m" kern -kk, "a" kern -k, "H" kern -k,
+	"I" kern -k, "y" kern -k;
+ligtable "o": "H" kern k, "'" kern kk, "y" kern k, "e" kern k, "m" kern k,
+	"n" kern k, "w" kern k;
+ligtable "u": "G" kern -kkkk, "g" kern -kkk,  % doesn't know it's G yet.
+	"j" kern -kk, "o" kern -k, "'" kern k;
+ligtable "H": "a" kern -k, "e" kern k, "G" kern -k, "u" kern -k, "'" kern k;
+ligtable "w": "a" kern -2kkk, "D" kern -k, "G" kern -kk, "j" kern -k,
+	"l" kern -kk, "p" kern -k, "q" kern -k, "Q" kern -kk, 
+	"S" kern -k, "t" kern -kkk, "u" kern -kkk, "v" kern -kk, "'" kern k;
+ligtable "j": "a" kern -k, "I" kern k, "e" kern kk, "G" kern -kk, "H" kern k,
+	"m" kern k, "n" kern k, "u" kern -k, "w" kern k, "y" kern k,
+	"'" kern kk;
+ligtable "v": "a" kern -k, "e" kern k, "'" kern k;
+ligtable "q": "C" kern k, "D" kern k, "e" kern kk, "H" kern k, "I" kern k,
+	"m" kern k, "n" kern k, "p" kern k, "Q" kern k, "T" kern k, 
+	"v" kern k, "w" kern k, "y" kern k, "'" kern kk;
+ligtable "Q": "u" kern -kk, "a" kern -kk, "e" kern k, "G" kern -kk,
+	"l" kern -kk, "p" kern -k, "t" kern -k, "w" kern k, "'" kern k;
+ligtable "a": "e" kern k, 3:: "N" kern kk, "G" kern k, 
+	"o" kern kk, "r" kern kk, "S" kern k, "'" kern kk, "w" kern kk;
+
+% Numbers and letters will rarely be next to each other...
+ligtable "0": "0" kern k, "2" kern k, "3" kern k;
+ligtable "1": "0" kern -kkk, "1" kern -k, "2" kern -k, "7" kern -k;
+
+% Here comes the tricktable. Generated by Olaf Kummer
+% (kummer@informatik.uni-hamburg.de).
+%
+% To process the special cases when "ng" is followed by "h" and
+% when "tl" is not followed by an "h" we must use some dummy
+% characters.
+%
+% The procedure runs as follows:
+%   tlh => 1h => T
+%   tl[other] => 1[other] => 11[other] => 121[other] => t21[other]
+%             (typeset t) -> 21[other] => l[other]
+%   ngh => Nh => 3h => 3gh => ngh (immediately typeset n) -> gh => G
+%   ng[other] => N[other]
+%
+% Kerning might be lost during this process, but only before the characters
+% that are handled by these conversion routines.
+
+% Char 1 is produced by the input "tl".
+% If the letter "h" follows, build the ligature "tlh", otherwise
+% recover the letters "t" and "l" and proceed normally. We
+% must set boundarychar to recover "t" and "l" at the end of
+% a word.
+boundarychar:=3;
+ligtable 1: "h"=:"T",  % 1h => T
+        1|=:|2,  % 11[other] => 121[other]
+        2=:|"t" , % 121[other] => t21[other]
+        boundarychar|=:|1,  % 1[boundary] => 11[boundary]
+        % 1[other] => 11[other]
+        "a"|=:|1, "b"|=:|1, "C"|=:|1, "D"|=:|1, "e"|=:|1, "G"|=:|1,
+        "H"|=:|1, "I"|=:|1, "j"|=:|1, "l"|=:|1, "m"|=:|1, "n"|=:|1,
+        "N"|=:|1, "o"|=:|1, "p"|=:|1, "q"|=:|1, "Q"|=:|1, "r"|=:|1,
+        "S"|=:|1, "t"|=:|1, "T"|=:|1, "u"|=:|1, "v"|=:|1, "w"|=:|1,
+        "y"|=:|1, "'"|=:|1, "0"|=:|1, "1"|=:|1, "2"|=:|1, "3"|=:|1,
+        "4"|=:|1, "5"|=:|1, "6"|=:|1, "7"|=:|1, "8"|=:|1, "9"|=:|1;
+ligtable 2: 1=:"l";  % 21[other] => l[other]
+
+% Char 3 is produced by the input "ngh". The original "h" is
+% still in the queue. Replace char 3 by "ng", but with the letter "n"
+% already typeset to avoid looping.
+ligtable 3: "h"|=:|"g",  % 3h => 3gh 
+            "g"=:|>"n";  % 3gh => ngh, skip n
+
+end;

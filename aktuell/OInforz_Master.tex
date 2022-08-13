@@ -1,0 +1,46 @@
+
+% Vorlage für ein Inforz
+% Erstellt von: Tobias Otterbein, totterbein@d120.de, Stand: 31.08.2014
+% Darf beliebig für ein Inforz angepasst werden.
+\documentclass[a5paper,pagesize,twoside,fontsize=8pt,DIV=15]{scrreprt}
+\usepackage[paperheight=214mm, paperwidth=152mm, left=17mm,right=17mm,top=17mm,bottom=22mm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{inforz}
+\graphicspath{{../shared/grafik}}
+
+
+% Sprache hier einstellen
+\usepackage[ngerman]{babel}
+
+% Auskommentieren, wenn keine Links im Inhalt benötigt werden. 4. Option sorgt für 2-seitige PDF-Ansicht
+\usepackage[colorlinks=true,linkcolor=black,urlcolor=black,pdfpagelayout=TwoColumnRight]{hyperref}
+
+%Euro symbol
+\usepackage{eurosym}
+
+\begin{document}
+
+% Titelseite
+\input{inhalt/titelseite_oinforz_master}
+
+% Stundenplan
+\input{inhalt/stundenplan_oinforz_master}
+
+% Inhaltsverzeichnis
+\tableofcontents
+
+% Inhalt
+\input{inhalt/kapitel_willkommen_oinforz_master}
+\input{inhalt/kapitel_studium_oinforz_master}
+\input{inhalt/kapitel_universitaet_oinforz_master}
+\input{inhalt/kapitel_freizeit_oinforz_master}
+\null\newpage
+\input{inhalt/kapitel_nachschlagen_oinforz_master}
+
+% Impressum
+\input{inhalt/impressum_oinforz_master}
+
+% Rückseite
+\input{inhalt/rueckseite_oinforz_master}
+
+\end{document}

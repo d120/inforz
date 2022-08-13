@@ -1,0 +1,50 @@
+% Vorlage für Briefpapier basierend auf dem TU Design
+% Erstellt von: Tobias Otterbein, totterbein@d120.de
+% Stand: 06.01.2016
+\documentclass[accentcolor=tud7a]{tudletter}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{ressourcen/brief}
+\usepackage{blindtext}
+
+\setlength{\parindent}{0pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Hier Daten ändern
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Daten des Empfängers:
+\newcommand{\name}{Deutsche Nationalbibliothek\\ Referat F 1.3}
+\newcommand{\strasse}{Adickesallee 1}
+\newcommand{\plzOrt}{60322 Frankfurt am Main}
+
+% Daten des Absenders:
+\newcommand{\absender}{Fabian Franke}
+\newcommand{\absendermail}{inforz@fachschaft.informatik.tu-darmstadt.de}
+\newcommand{\logopfad}{ressourcen/bildmarke_ohne_rand}
+% Betreff:
+\newcommand{\betreff}{Pflichtexemplare für ISSN 1614-4295}
+% Inforzname:
+\newcommand{\inforz}{Inforz -- Sonderausgaben Ophasen Winter 2018/19 Bachelor und Master}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+\begin{letter}{\name\\ \strasse\\ \plzOrt}
+
+
+    \opening{Sehr geehrte Damen und Herren,}
+
+    anbei erhalten Sie je zwei Pflichtexemplare folgender Ausgaben der Zeitschrift der Studierenden
+    des Fachbereichs Informatik der TU Darmstadt \glqq{}Inforz\grqq{}:
+
+    \begin{itemize}
+        \item Sonderausgabe Winterophase 2018 Bachelor
+        \item Sonderausgabe Winterophase 2018 Master
+    \end{itemize}
+
+
+
+    \closing{Mit freundlichen Grüßen}
+
+\end{letter}
+\end{document}

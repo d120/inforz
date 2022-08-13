@@ -1,0 +1,77 @@
+% Vorlage für ein Inforz
+% Erstellt von: Tobias Otterbein, totterbein@d120.de, Stand: 31.08.2014
+% Darf beliebig für ein Inforz angepasst werden.
+\documentclass[a5paper,pagesize,twoside,fontsize=10pt,DIV=15]{scrreprt}
+\usepackage[utf8]{inputenc}
+\usepackage{paket/inforz}
+\usepackage{gensymb}
+\usepackage{framed}
+\usepackage[autostyle=true,german=quotes,english=american]{csquotes}
+\usepackage{textcomp}
+\usepackage{dashbox, anyfontsize}
+%\usepackage{todonotes}
+\usepackage{ marvosym }
+
+% Sprache hier einstellen
+\usepackage[ngerman]{babel}
+\usepackage{blindtext}
+
+% Auskommentieren, wenn keine Links im Inhalt benötigt werden. 4. Option sorgt für 2-seitige PDF-Ansicht
+\usepackage[colorlinks=true,linkcolor=black,urlcolor=black,pdfpagelayout=TwoColumnRight]{hyperref}
+
+% Schöne Anführungszeichen mit \enquote{[...]}
+\usepackage{csquotes}
+
+\begin{document}
+
+% Titelseite
+\input{inhalt/titelseite}
+
+% Vorwort
+\input{inhalt/vorwort}
+
+% Inhaltsverzeichnis
+\tableofcontents
+\vfill
+\bildmitunterschrift{grafik/wesen/wesen_inforz}{width=2.5cm}{}{}
+\newpage
+
+% Inhalt
+
+%TODO HIER INHALT EINFÜGEN
+
+\phantomsection
+\addcontentsline{toc}{chapter}{Rund ums Studium}
+\input{inhalt/arbeitImStudium.tex}
+\clearpage
+\input{inhalt/hlmd.tex}
+\clearpage
+\input{inhalt/filmkreistippssose2017.tex}
+\clearpage
+\input{inhalt/qoutes.tex}
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{Aus der Fachschaft}
+\input{inhalt/podcast.tex}
+\vspace{1em}
+\input{inhalt/rezept_linsencurry.tex}
+\clearpage
+\input{inhalt/distros2.tex}
+\input{inhalt/piet.tex}
+\clearpage
+\input{inhalt/zeta.tex}
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{Interviews mit unserem Fachbereich}
+\input{inhalt/interview_koch.tex}
+\clearpage
+\input{inhalt/interview_brandt.tex}
+\clearpage
+
+% Impressum
+\input{inhalt/impressum}
+
+% Rückseite
+\input{inhalt/rueckseite}
+
+\end{document}
