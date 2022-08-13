@@ -1,0 +1,376 @@
+% Tobias Otterbein, Stand: 11.09.2014
+% Anpassungen für das Inforz
+
+\RequirePackage{ifthen}
+\RequirePackage{multicol}
+\RequirePackage{rotating}
+\RequirePackage{wallpaper}
+\RequirePackage[absolute]{textpos}
+\RequirePackage{graphicx}
+\RequirePackage{wasysym}
+\RequirePackage{longtable}
+\RequirePackage{fancyhdr}
+\RequirePackage{color}
+\RequirePackage{contour}
+\RequirePackage{multirow}
+\RequirePackage{paralist}
+\RequirePackage{xcolor}
+\RequirePackage{enumitem}
+\RequirePackage{etoolbox}
+\RequirePackage{l3keys2e}
+\RequirePackage{xparse}
+
+
+%Einrückungen vor Absätzen aus
+\setlength{\parindent}{0pt}
+
+%% Schriftgröße Überschriften
+\setkomafont{section}{\huge}
+\setkomafont{chapter}{\Huge}
+
+
+%% Chapterseiten
+
+% Linien für Chapterüberschriften (oben)
+\newcommand*{\ORIGchapterheadstartvskip}{}%
+\let\ORIGchapterheadstartvskip=\chapterheadstartvskip
+\renewcommand*{\chapterheadstartvskip}{%
+    \ORIGchapterheadstartvskip
+    {%
+        \setlength{\parskip}{0pt}%
+        \noindent\rule[.3\baselineskip]{\linewidth}{1pt}\par
+    }%
+}
+
+% Linien für Chapterüberschriften (unten)
+\newcommand*{\ORIGchapterheadendvskip}{}%
+\let\ORIGchapterheadendvskip=\chapterheadendvskip
+\renewcommand*{\chapterheadendvskip}{%
+    {%
+        \setlength{\parskip}{0pt}%
+        \noindent\rule[.3\baselineskip]{\linewidth}{1pt}\par
+    }%
+    \ORIGchapterheadendvskip
+}
+
+% Ausrichtung der Chapterüberschrift
+\addtokomafont{chapter}{\raggedleft}
+
+% Chapter ohne Seitenzahl
+\renewcommand*{\chapterpagestyle}{empty}
+
+% Anpassung der Zitate
+\renewcommand{\dictumwidth}{0.5\textwidth}
+\renewcommand{\raggeddictumtext}{\raggedleft}
+\addtokomafont{dictumauthor}{\tiny}
+
+
+%% Kopf- und Fußzeile
+\pagestyle{fancy}
+\fancyhf{}
+
+\fancyhead[EL,OR]{\textbf{\sffamily\nouppercase\leftmark}}
+\renewcommand{\headrulewidth}{1pt}
+
+\renewcommand{\footrulewidth}{1pt}
+\fancyfoot[EL,OR]{\ifthispageodd{\pagemark$~>$}{$<~$\pagemark}}
+\fancyfoot[EC,OC]{\textbf{\sffamily Inforz for \ophase}}
+
+
+
+
+%% Fußnote
+\deffootnotemark{$[$\thefootnotemark$]$}
+\deffootnote[1em]{1.5em}{1em}{$[$\thefootnotemark$]$}
+\addtokomafont{footnote}{\small}
+
+
+%% Weitere Kommandos
+
+% Definition der Ophase
+\newcommand{\ophase}{\ifthenelse{\the\month > 4}{Winterophase }{Sommerophase }\the\year}
+\newcommand{\ophaseEN}{\ifthenelse{\the\month > 4}{Winter Ophase }{Summer Ophase }\the\year}
+\newcommand{\ofahrt}{\ifthenelse{\the\month > 4}{Winterofahrt }{Sommerofahrt }\the\year}
+\newcommand{\ophaseGER}{\ophase}
+
+% Kapiteldeckblätter
+% 1: Kapitelname
+% 2: Bild
+% 3: Zitat
+% 4: Autor des Zitats
+\newcommand{\kapitel}[4]{%
+    \addchap{#1}
+    \dictum[#4]{#3}
+    \vfill
+    \ifthenelse{\equal{#2}{}}{}{
+        \begin{center}
+            \includegraphics[width=10cm]{#2}
+        \end{center}}
+    \newpage
+}
+
+% Bild mit Unterschrift
+% 1: Bild
+% 2: Bildgröße
+% 3: Bildunterschrift
+% 4: Bildautor
+\newcommand{\bildmitunterschrift}[4]{%
+    \begin{center}
+        \includegraphics[#2]{#1}
+
+        #3
+
+        \ifthenelse{\equal{#4}{}}{}{\sffamily\tiny (\figurename{}: #4)}
+    \end{center}
+}
+
+
+% Neuer Artikel
+% 1: Überschrift
+% 2: Vorspann
+% 3: Text
+% 4: Autor
+\newcommand{\artikel}[4]{%
+    \addsec{#1}
+    \begin{multicols}{2}
+        \noindent\textbf{\sffamily{#2}}
+        \vspace{0.5cm}
+
+        #3
+
+        \begin{flushright}
+            \sffamily{#4}
+        \end{flushright}
+    \end{multicols}
+}
+
+% Eigenständiger Autor
+\newcommand{\autor}[1]{%
+    \begin{flushright}
+        \sffamily{#1}
+    \end{flushright}
+}
+
+% Lesezeichen rechts
+\newcommand{\lesezeichenr}[2]{%
+\raggedleft\textbf{#1}\\
+{\small \url{#2}}\\
+\vspace{0mm}
+}
+
+% Lesezeichen links
+\newcommand{\lesezeichenl}[2]{%
+\raggedright\textbf{#1}\\
+{\small \url{#2}}\\
+\vspace{0mm}
+}
+
+% Checkboxeintrag
+% 1: Checkboxtext
+% 2: Beschreibung
+\newcommand{\checkbox}[2]{%
+    \begin{itemize}
+
+        \item[\Square] \textbf{#1}
+
+            \vspace{3mm}
+            #2
+    \end{itemize}
+    \vspace{3mm}
+}
+
+
+
+% Dozent
+% 1: Name der Bilddatei. Dateien müssen um Ordner grafik/studium liegen
+% 2: Name des Dozenten
+% 3: Gebäude und Raum des Dozenten
+% 4: E-Mail-Adresse des Dozenten
+% 5: Fachgebiet des Dozenten
+% Erklräung: Bild und Text sind in einer Tabelle. Linke Spalte das Bild, rechte Spalte der Text. Damit der Text neben dem Bild stehen kann, wird er mit einer parbox gewrappt, sodass der ganze Text als ein Objekt behandelt werden kann. Raisebox erhöht die Parbox, da sie sonst zu niedrig wäre.
+\newcommand{\dozent}[6]{
+    \noindent
+    \begin{tabular}{p{2.8cm}l}
+        \includegraphics[height=2.5cm]{grafik/studium/#1}
+        &
+        \raisebox{1.2cm}{
+            \parbox{8cm}{
+                \textbf{Name:} #2           \\
+                \textbf{Gebäude/Raum:} #3   \\
+                \textbf{E-Mail-Adresse:} #4 \\
+                \textbf{#5:} #6
+            }}
+    \end{tabular}
+}
+
+\newcommand{\specialcell}[2][l]{%
+    \begin{tabular}[#1]{@{}c@{}}#2\end{tabular}%
+}
+\ExplSyntaxOn
+\seq_gclear_new:N \g_inforz_workshop_seq
+
+% \DeclareDocumentCommand{\realtitletext}{mm}{#1}
+
+% \workshop
+% 1: Titel
+% 2: Anbietende Personen
+% 3: Zeitslots
+% 4: Beschreibungstext
+% 5: Maximale Teilnehmer*innenzahl
+% 6: Benötigtes Material
+% 7: Voraussetzungen zur Teilnahme
+% 8: Sonstige Infos
+% 9: Raum
+\DeclareDocumentCommand{\workshop}{+m +m +m +m +m +m +m +m +m} {
+    % Store the Workshop properties
+    \seq_clear_new:N \l_inforz_tmp_seq
+    % \seq_put_right:Nn \l_inforz_tmp_seq { 5 }
+    \seq_put_right:Nn \l_inforz_tmp_seq {#1}
+    \seq_put_right:Nn \l_inforz_tmp_seq {#2}
+    \seq_put_right:Nn \l_inforz_tmp_seq {#3}
+    \seq_put_right:Nn \l_inforz_tmp_seq {#4}
+    \seq_put_right:Nn \l_inforz_tmp_seq {#5}
+    \seq_put_right:Nn \l_inforz_tmp_seq {#6}
+    \seq_put_right:Nn \l_inforz_tmp_seq {#7}
+    \seq_put_right:Nn \l_inforz_tmp_seq {#8}
+    \seq_put_right:Nn \l_inforz_tmp_seq {#9}
+
+    % Store the current workshop in the global workshop sequence
+    \exp_args:NNf \seq_gput_right:Nn \g_inforz_workshop_seq { \l_inforz_tmp_seq }
+
+    % Sort Alphabetically
+    \seq_sort:Nn \g_inforz_workshop_seq {
+        \seq_clear_new:N \l_inforz_tmp_seq_one
+        \DeclareDocumentCommand{\realtitletext}{mm}{#2}
+        \tl_set:Nn \l_inforz_tmp_seq_one { ##1 }
+        \seq_clear_new:N \l_inforz_tmp_seq_two
+        \tl_set:Nn \l_inforz_tmp_seq_two { ##2 }
+        \int_compare:nNnTF { \__str_if_eq:nn {\seq_item:Nn \l_inforz_tmp_seq_one {1}} {\seq_item:Nn \l_inforz_tmp_seq_two {1}} } < 0
+        { \sort_return_same: }
+        { \sort_return_swapped: }
+    }
+}
+
+\DeclareDocumentCommand{\printWorhshops}{m} {
+    % Iterate through all The Workshops
+    \seq_map_inline:Nn \g_inforz_workshop_seq {
+        % Save the current Worhsop as a Sequence to iterate upon
+        \seq_clear_new:N \l_inforz_tmp_seq
+        \tl_set:Nn \l_inforz_tmp_seq { ##1 }
+
+        % Ensure that no Pagebreaks happen within workshops by using a Minipage
+        \begin{minipage}{\textwidth}
+
+            %%--Workshop Infos--%%
+
+            % Workshop Title
+            \addsec{
+                \seq_item:Nn \l_inforz_tmp_seq {1}
+            }
+
+            % Authors
+            \textbf{
+                \sffamily{
+                    \makebox[\widthof{Anbietende~Person(en)}][l]{
+                        Anbietende~Person(en)
+                    }:~
+                    \seq_item:Nn \l_inforz_tmp_seq {2}
+                }
+            }
+            \par
+
+            \ifthenelse{\equal{\seq_item:Nn \l_inforz_tmp_seq {3}}{}}{}{% Time Slots
+                \textbf{
+                    \sffamily{
+                        \makebox[\widthof{Anbietende~Person(en)}][l]{
+                            Zeitslot
+                        }:~
+                        \seq_item:Nn \l_inforz_tmp_seq {3}
+                    }
+                }
+                \par
+            }
+
+            \ifthenelse{\equal{\seq_item:Nn \l_inforz_tmp_seq {9}}{}}{}{% Room
+                \textbf{
+                    \sffamily{
+                        \makebox[\widthof{Anbietende~Person(en)}][l]{
+                            Raum
+                        }:~
+                        \seq_item:Nn \l_inforz_tmp_seq {9}
+                    }
+                }
+                \par
+            }
+
+            % Main Description
+            \bigskip
+            \seq_item:Nn \l_inforz_tmp_seq {4}
+            \par
+            \bigskip
+
+            \ifthenelse{\equal{\seq_item:Nn \l_inforz_tmp_seq {5}}{}}{}{
+                % Max Participants
+                \textbf{
+                    \sffamily{
+                        \makebox[\widthof{Maximale~Teilnehmer:innenzahl}][l]{
+                            Maximale~Teilnehmer:innenzahl
+                        }:~
+                        \seq_item:Nn \l_inforz_tmp_seq {5}
+                    }
+                }
+                \par
+            }
+
+            \exp_args:Nx \tl_if_blank:nF {\seq_item:Nn \l_inforz_tmp_seq {6}}{% Required Materials
+                \textbf{
+                    \sffamily{
+                        \makebox[\widthof{Maximale~Teilnehmer:innenzahl}][l]{
+                            Benötigtes~Material
+                        }:~
+                        \seq_item:Nn \l_inforz_tmp_seq {6}
+                    }
+                }
+                \par
+            }
+
+            \exp_args:Nx \tl_if_blank:nF {\seq_item:Nn \l_inforz_tmp_seq {7}}{% Requirements for participating
+                \textbf{
+                    \sffamily{
+                        \makebox[\widthof{Maximale~Teilnehmer:innenzahl}][l]{
+                            Voraussetzung~zur~Teilnahme
+                        }:~
+                        \seq_item:Nn \l_inforz_tmp_seq {7}
+                    }
+                }
+                \par
+            }
+
+            \ifthenelse{\equal{\seq_item:Nn \l_inforz_tmp_seq {8}}{}}{}{% Sonstige Infos
+                \textbf{
+                    \sffamily{
+                        \makebox[\widthof{Maximale~Teilnehmer:innenzahl}][l]{
+                            Sonstige~Infos
+                        }:~
+                        \seq_item:Nn \l_inforz_tmp_seq {8}
+                    }
+                }
+            }
+        \end{minipage}
+
+        % Potentially allow Pagebreak here
+        \par
+        \vspace{0.5cm}
+        \pagebreak[3]
+    }
+}
+
+\DeclareDocumentCommand{\workshopCount}{ m }{
+    \seq_count:N \g_inforz_workshop_seq
+}
+\ExplSyntaxOff
+
+\newcommand{\notizen}{
+    \addsec{Notizen:}
+    \newpage}
+

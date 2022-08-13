@@ -1,0 +1,38 @@
+% Vorlage für ein Inforz
+% Erstellt von: Tobias Otterbein, totterbein@d120.de, Stand: 31.08.2014
+% Darf beliebig für ein Inforz angepasst werden.
+\documentclass[a5paper,pagesize,twoside,fontsize=8pt,DIV=15]{scrreprt}
+\usepackage[utf8]{inputenc}
+\usepackage{paket/inforz}
+
+
+% Sprache hier einstellen
+\usepackage[ngerman]{babel}
+
+% Auskommentieren, wenn keine Links im Inhalt benötigt werden. 4. Option sorgt für 2-seitige PDF-Ansicht
+\usepackage[colorlinks=true,linkcolor=black,urlcolor=black,pdfpagelayout=TwoColumnRight]{hyperref}
+
+\begin{document}
+
+% Titelseite
+\input{../inhalt/titelseite_sinforz}
+
+% Vorwort
+\input{../inhalt/willkommen/vorwort_fachschaft_sinforz}
+
+% Inhaltsverzeichnis
+\tableofcontents
+\newpage
+
+% Inhalt
+\input{../inhalt/willkommen/vorwort_dekanat_sinforz}
+\input{../inhalt/kapitel_studium_sinforz}
+\input{../inhalt/kapitel_nachschlagen_sinforz}
+
+% Impressum
+\input{../inhalt/impressum_sinforz}
+
+% Rückseite
+\input{../inhalt/rueckseite_sinforz}
+
+\end{document}

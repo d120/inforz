@@ -202,4 +202,8 @@ git update-index --no-assume-unchanged .vscode/settings.json
         }
     ],
     "latex-workshop.latex.recipe.default": "latexmk (lualatex)",
+    "latex-workshop.latex.texDirs": [
+        "%WORKSPACE_FOLDER%/paket//"
+    ],
+    "autoHide.autoHidePanel": false
 }
