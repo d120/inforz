@@ -1,0 +1,1 @@
+$ENV{'TEXINPUTS'}='../shared:../shared/paket//:'.$ENV{'TEXINPUTS'};
