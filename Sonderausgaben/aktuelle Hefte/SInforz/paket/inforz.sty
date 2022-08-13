@@ -29,22 +29,22 @@
 \newcommand*{\ORIGchapterheadstartvskip}{}%
 \let\ORIGchapterheadstartvskip=\chapterheadstartvskip
 \renewcommand*{\chapterheadstartvskip}{%
-  \ORIGchapterheadstartvskip
-  {%
-    \setlength{\parskip}{0pt}%
-    \noindent\rule[.3\baselineskip]{\linewidth}{1pt}\par
-  }%
+    \ORIGchapterheadstartvskip
+    {%
+        \setlength{\parskip}{0pt}%
+        \noindent\rule[.3\baselineskip]{\linewidth}{1pt}\par
+    }%
 }
 
 % Linien für Chapterüberschriften (unten)
 \newcommand*{\ORIGchapterheadendvskip}{}%
 \let\ORIGchapterheadendvskip=\chapterheadendvskip
 \renewcommand*{\chapterheadendvskip}{%
-  {%
-    \setlength{\parskip}{0pt}%
-    \noindent\rule[.3\baselineskip]{\linewidth}{1pt}\par
-  }%
-  \ORIGchapterheadendvskip
+    {%
+        \setlength{\parskip}{0pt}%
+        \noindent\rule[.3\baselineskip]{\linewidth}{1pt}\par
+    }%
+    \ORIGchapterheadendvskip
 }
 
 % Ausrichtung der Chapterüberschrift
@@ -88,14 +88,14 @@
 % 3: Zitat
 % 4: Autor des Zitats
 \newcommand{\kapitel}[4]{%
-	\addchap{#1}
-	\dictum[#4]{#3}
-	\vfill
-	\ifthenelse{\equal{#2}{}}{}{
-	\begin{center}
-	\includegraphics[width=10cm]{#2}
-	\end{center}}
-	\newpage
+    \addchap{#1}
+    \dictum[#4]{#3}
+    \vfill
+    \ifthenelse{\equal{#2}{}}{}{
+        \begin{center}
+            \includegraphics[width=10cm]{#2}
+        \end{center}}
+    \newpage
 }
 
 % Bild mit Unterschrift
@@ -104,13 +104,13 @@
 % 3: Bildunterschrift
 % 4: Bildautor
 \newcommand{\bildmitunterschrift}[4]{%
-	\begin{center}
-	\includegraphics[#2]{#1}
+    \begin{center}
+        \includegraphics[#2]{#1}
 
-	#3
+        #3
 
-	\ifthenelse{\equal{#4}{}}{}{\sffamily\tiny (Bild: #4)}
-	\end{center}
+        \ifthenelse{\equal{#4}{}}{}{\sffamily\tiny (Bild: #4)}
+    \end{center}
 }
 
 
@@ -120,24 +120,24 @@
 % 3: Text
 % 4: Autor
 \newcommand{\artikel}[4]{%
-	\addsec{#1}
-	\begin{multicols}{2}
-	\noindent\textbf{\sffamily{#2}}
-	\vspace{0.5cm}
+    \addsec{#1}
+    \begin{multicols}{2}
+        \noindent\textbf{\sffamily{#2}}
+        \vspace{0.5cm}
 
-	#3
+        #3
 
-	\begin{flushright}
-	\sffamily{#4}
-	\end{flushright}
-	\end{multicols}
+        \begin{flushright}
+            \sffamily{#4}
+        \end{flushright}
+    \end{multicols}
 }
 
 % Eigenständiger Autor
 \newcommand{\autor}[1]{%
-	\begin{flushright}
-	\sffamily{#1}
-	\end{flushright}
+    \begin{flushright}
+        \sffamily{#1}
+    \end{flushright}
 }
 
 % Lesezeichen rechts
@@ -158,12 +158,12 @@
 % 1: Checkboxtext
 % 2: Beschreibung
 \newcommand{\checkbox}[2]{%
-\begin{itemize}
+    \begin{itemize}
 
-	\item[\Square] \textbf{#1}
+        \item[\Square] \textbf{#1}
 
-	\vspace{3mm}
-	#2
-\end{itemize}
-\vspace{3mm}
+            \vspace{3mm}
+            #2
+    \end{itemize}
+    \vspace{3mm}
 }
