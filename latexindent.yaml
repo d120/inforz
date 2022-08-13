@@ -313,7 +313,7 @@ noAdditionalIndent:
     foreach: 0
     widepage: 0
     comment: 0
-    document: 0
+    document: 1
     frame: 0
 
 # if you have indent rules for particular code blocks
