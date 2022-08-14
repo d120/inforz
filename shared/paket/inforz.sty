@@ -1,6 +1,10 @@
-% Tobias Otterbein, Stand: 11.09.2014
-% Anpassungen für das Inforz
+\NeedsTeXFormat{LaTeX2e}
+\RequirePackage{expl3}
+\ProvidesExplPackage{inforz}{2022/08/14}{1.0-snapshot}{Gemeinsame Definitionen und Makros für Inforze}
+% Tobias Otterbein, Stand: 11.09.2014 - erste Version
+% Ruben Deisenroth, Stand: 14.08.2022 - zusammenführen Verschiedener Versionen + expl3 rewrite
 
+% Pakete
 \RequirePackage{ifthen}
 \RequirePackage{multicol}
 \RequirePackage{rotating}
@@ -10,7 +14,6 @@
 \RequirePackage{wasysym}
 \RequirePackage{longtable}
 \RequirePackage{fancyhdr}
-\RequirePackage{color}
 \RequirePackage{contour}
 \RequirePackage{multirow}
 \RequirePackage{paralist}
@@ -19,6 +22,12 @@
 \RequirePackage{etoolbox}
 \RequirePackage{l3keys2e}
 \RequirePackage{xparse}
+\RequirePackage{eurosym}
+\RequirePackage{newunicodechar}
+\RequirePackage[utf8]{inputenc}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{colorlinks=true,linkcolor=black,urlcolor=black,pdfpagelayout=TwoColumnRight}{hyperref}
+\RequirePackage{hyperref}
 
 
 %Einrückungen vor Absätzen aus
@@ -28,12 +37,20 @@
 \setkomafont{section}{\huge}
 \setkomafont{chapter}{\Huge}
 
+% Captions
+\providecaptionname{ngerman, german}{\summerophasename}{Sommerophase}
+\providecaptionname{english, american, british}{\summerophasename}{Summer~Ophase}
+\providecaptionname{ngerman, german}{\winterophasename}{Winterophase}
+\providecaptionname{english, american, british}{\winterophasename}{Winter~Ophase}
+% Für Ofahrt kann z.B. \declarecaptionname{ngerman, german}{\summerophasename}{Sommerofahrt} verwendet werden
+\providecaptionname{ngerman, german}{\inforzforophasename}{Inforz~zur~\ophase{}}
+\providecaptionname{english, american, british}{\summerophasename}{Inforz~for~\ophase{}}
+
 
 %% Chapterseiten
 
 % Linien für Chapterüberschriften (oben)
-\newcommand*{\ORIGchapterheadstartvskip}{}%
-\let\ORIGchapterheadstartvskip=\chapterheadstartvskip
+\cs_set_eq:NN \ORIGchapterheadstartvskip \chapterheadstartvskip
 \renewcommand*{\chapterheadstartvskip}{%
     \ORIGchapterheadstartvskip
     {%
@@ -43,8 +60,7 @@
 }
 
 % Linien für Chapterüberschriften (unten)
-\newcommand*{\ORIGchapterheadendvskip}{}%
-\let\ORIGchapterheadendvskip=\chapterheadendvskip
+\cs_set_eq:NN \ORIGchapterheadendvskip \chapterheadendvskip
 \renewcommand*{\chapterheadendvskip}{%
     {%
         \setlength{\parskip}{0pt}%
@@ -74,7 +90,7 @@
 
 \renewcommand{\footrulewidth}{1pt}
 \fancyfoot[EL,OR]{\ifthispageodd{\pagemark$~>$}{$<~$\pagemark}}
-\fancyfoot[EC,OC]{\textbf{\sffamily Inforz for \ophase}}
+\fancyfoot[EC,OC]{\textbf{\sffamily\inforzforophasename}}
 
 
 
@@ -88,10 +104,14 @@
 %% Weitere Kommandos
 
 % Definition der Ophase
-\newcommand{\ophase}{\ifthenelse{\the\month > 4}{Winterophase }{Sommerophase }\the\year}
-\newcommand{\ophaseEN}{\ifthenelse{\the\month > 4}{Winter Ophase }{Summer Ophase }\the\year}
-\newcommand{\ofahrt}{\ifthenelse{\the\month > 4}{Winterofahrt }{Sommerofahrt }\the\year}
-\newcommand{\ophaseGER}{\ophase}
+\DeclareDocumentCommand{\ophase}{m}{
+    \int_compare:nTF {\the\month > 4}{
+        \winterophasename
+    }{
+        \summerophasename
+    }
+    \space{}\the\year
+}
 
 % Kapiteldeckblätter
 % 1: Kapitelname
@@ -102,10 +122,11 @@
     \addchap{#1}
     \dictum[#4]{#3}
     \vfill
-    \ifthenelse{\equal{#2}{}}{}{
+    \tl_if_blank:eF {#2} {
         \begin{center}
             \includegraphics[width=10cm]{#2}
-        \end{center}}
+        \end{center}
+    }
     \newpage
 }
 
@@ -117,10 +138,12 @@
 \newcommand{\bildmitunterschrift}[4]{%
     \begin{center}
         \includegraphics[#2]{#1}
-
+        \par
         #3
-
-        \ifthenelse{\equal{#4}{}}{}{\sffamily\tiny (\figurename{}: #4)}
+        \par
+        \tl_if_blank:eF {#4} {
+            \sffamily\tiny (\figurename{}:~#4)
+        }
     \end{center}
 }
 
@@ -135,9 +158,9 @@
     \begin{multicols}{2}
         \noindent\textbf{\sffamily{#2}}
         \vspace{0.5cm}
-
+        \par
         #3
-
+        \par
         \begin{flushright}
             \sffamily{#4}
         \end{flushright}
@@ -153,7 +176,8 @@
 
 % Lesezeichen rechts
 \newcommand{\lesezeichenr}[2]{%
-\raggedleft\textbf{#1}\\
+\raggedleft
+\textbf{#1}\\
 {\small \url{#2}}\\
 \vspace{0mm}
 }
@@ -195,18 +219,21 @@
         &
         \raisebox{1.2cm}{
             \parbox{8cm}{
-                \textbf{Name:} #2           \\
-                \textbf{Gebäude/Raum:} #3   \\
-                \textbf{E-Mail-Adresse:} #4 \\
-                \textbf{#5:} #6
-            }}
+                \textbf{Name:}~#2           \\
+                \textbf{Gebäude/Raum:}~#3   \\
+                \textbf{E-Mail-Adresse:}~#4 \\
+                \textbf{#5:}~#6
+            }
+        }
     \end{tabular}
 }
 
 \newcommand{\specialcell}[2][l]{%
-    \begin{tabular}[#1]{@{}c@{}}#2\end{tabular}%
+    \begin{tabular}[#1]{@{}c@{}}
+        #2
+    \end{tabular}%
 }
-\ExplSyntaxOn
+
 \seq_gclear_new:N \g_inforz_workshop_seq
 
 % \DeclareDocumentCommand{\realtitletext}{mm}{#1}
@@ -368,9 +395,11 @@
 \DeclareDocumentCommand{\workshopCount}{ m }{
     \seq_count:N \g_inforz_workshop_seq
 }
-\ExplSyntaxOff
 
 \newcommand{\notizen}{
     \addsec{Notizen:}
-    \newpage}
+    \newpage
+}
 
+% € Symbol
+\newunicodechar{€}{\euro}
