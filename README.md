@@ -1,6 +1,6 @@
 # Inforz - Informatikerzeitschrift der Fachschaft Informatik an der TU Darmstadt
 
-[![Build LaTeX document](https://github.com/Rdeisenroth/inforz/actions/workflows/build.yml/badge.svg)](https://github.com/Rdeisenroth/inforz/actions/workflows/build.yml)
+[![Build LaTeX document](https://github.com/d120/inforz/actions/workflows/build.yml/badge.svg)](https://github.com/d120/inforz/actions/workflows/build.yml)
 
 Die Inhalte stehen, wenn nicht anders markiert, unter der Creative Commons Lizenz:
 
