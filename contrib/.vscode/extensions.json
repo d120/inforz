@@ -1,1 +1,5 @@
-.vscode/extensions.json
+{
+    "recommendations": [
+        "James-Yu.latex-workshop"
+    ]
+}
