@@ -104,7 +104,7 @@
 %% Weitere Kommandos
 
 % Definition der Ophase
-\DeclareDocumentCommand{\ophase}{m}{
+\DeclareDocumentCommand{\ophase}{}{
     \int_compare:nTF {\the\month > 4}{
         \winterophasename
     }{
@@ -278,7 +278,7 @@
     }
 }
 
-\DeclareDocumentCommand{\printWorhshops}{m} {
+\DeclareDocumentCommand{\printWorhshops}{} {
     % Iterate through all The Workshops
     \seq_map_inline:Nn \g_inforz_workshop_seq {
         % Save the current Worhsop as a Sequence to iterate upon
