@@ -41,7 +41,7 @@ jobs:
           #pre_compile: "tlmgr update --self && tlmgr update --all"
           # Cleanup
           post_compile: "latexmk -c"
-        env:
+        #env:
           # Include Shared Folder
           #TEXINPUTS: ".:../shared:../shared/paket//:"
       # 3. Copy the generated pdf to the output folder
