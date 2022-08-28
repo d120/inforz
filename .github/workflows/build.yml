@@ -40,7 +40,7 @@ jobs:
           # update LaTeX-Packages (this takes a long time, so we avoid it if possible)
           #pre_compile: "tlmgr update --self && tlmgr update --all"
           # Cleanup
-          post_compile: "latexmk -c"
+          #post_compile: "latexmk -c"
         #env:
           # Include Shared Folder
           #TEXINPUTS: ".:../shared:../shared/paket//:"
