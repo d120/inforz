@@ -1,0 +1,7 @@
+# Commits to be ignored for assigning blame
+#
+# Any bulk formatting commits should be listed here
+# Apply this to a local environment with: git config blame.ignoreRevsFile .git-blame-ignore-revs
+
+3c9eff8abc2b3254b831fcbad9a4a3ed381a7a25 # Apply pre-commit hook
+85e575ea5b124b79ceb59b9fe106452a33b0cae3 # Indent files
