@@ -28,6 +28,10 @@
 \PassOptionsToPackage{hyphens}{url}
 \PassOptionsToPackage{colorlinks=true,linkcolor=black,urlcolor=black,pdfpagelayout=TwoColumnRight}{hyperref}
 \RequirePackage{hyperref}
+\RequirePackage{tikz}
+\RequirePackage{xparse}
+\RequirePackage[fixed]{fontawesome5}
+\RequirePackage{csquotes}
 
 
 %Einrückungen vor Absätzen aus
@@ -63,9 +67,9 @@
 \cs_set_eq:NN \ORIGchapterheadendvskip \chapterheadendvskip
 \renewcommand*{\chapterheadendvskip}{%
     {%
-        \setlength{\parskip}{0pt}%
-        \noindent\rule[.3\baselineskip]{\linewidth}{1pt}\par
-    }%
+            \setlength{\parskip}{0pt}%
+            \noindent\rule[.3\baselineskip]{\linewidth}{1pt}\par
+        }%
     \ORIGchapterheadendvskip
 }
 
@@ -153,18 +157,24 @@
 % 2: Vorspann
 % 3: Text
 % 4: Autor
-\newcommand{\artikel}[4]{%
-    \addsec{#1}
-    \begin{multicols}{2}
-        \noindent\textbf{\sffamily{#2}}
-        \vspace{0.5cm}
-        \par
-        #3
-        \par
-        \begin{flushright}
-            \sffamily{#4}
-        \end{flushright}
-    \end{multicols}
+\DeclareDocumentCommand{\artikel}{s +m +m +m +m}{
+    %\begin{noindent}
+    \addsec{#2}
+    \bool_if:nF {#1} {
+        \begin{multicols}{2}
+    }
+    \noindent\textbf{\sffamily{#3}}
+    \vspace{0.5cm}
+    \par
+    #4
+    \par
+    \begin{flushright}
+        \sffamily{#5}
+    \end{flushright}
+    \bool_if:nF {#1} {
+        \end{multicols}
+    }
+    %\end{noindent}
 }
 
 % Eigenständiger Autor
@@ -216,12 +226,12 @@
     \noindent
     \begin{tabular}{p{2.8cm}l}
         \includegraphics[height=2.5cm]{grafik/studium/#1}
-        &
+         &
         \raisebox{1.2cm}{
             \parbox{8cm}{
-                \textbf{Name:}~#2           \\
-                \textbf{Gebäude/Raum:}~#3   \\
-                \textbf{E-Mail-Adresse:}~#4 \\
+        \textbf{Name:}~#2           \\
+        \textbf{Gebäude/Raum:}~#3   \\
+        \textbf{E-Mail-Adresse:}~#4 \\
                 \textbf{#5:}~#6
             }
         }
@@ -273,8 +283,8 @@
         \seq_clear_new:N \l_inforz_tmp_seq_two
         \tl_set:Nn \l_inforz_tmp_seq_two { ##2 }
         \int_compare:nNnTF { \__str_if_eq:nn {\seq_item:Nn \l_inforz_tmp_seq_one {1}} {\seq_item:Nn \l_inforz_tmp_seq_two {1}} } < 0
-        { \sort_return_same: }
-        { \sort_return_swapped: }
+            { \sort_return_same: }
+            { \sort_return_swapped: }
     }
 }
 

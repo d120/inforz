@@ -1,15 +1,22 @@
+% Remove Headline and Footline
 \thispagestyle{empty}
-\begin{textblock*}{8cm}(1cm,1cm)
-    \includegraphics[angle=90,height=15cm]{stundenplan}
-\end{textblock*}
+% Draw the Background centered
+\begin{tikzpicture}[remember picture,overlay]
+    \node[anchor=center] at (current page.center) {\includegraphics[angle=90,width=\textwidth,height=\textheight,keepaspectratio]{stundenplan}};
+\end{tikzpicture}
 \cleardoublepage
 
-%\thispagestyle{empty}
-%\backgroundsetup{
-%scale=1,
-%angle=0,
-%opacity=1,
-%contents={\includegraphics[angle=90, keepaspectratio, height=\paperheight]{stundenplan}}
-%}
-
-%\cleardoublepage
+% Alternatively, with rotated page
+% % Remove Headline and Footline
+% \thispagestyle{empty}
+% % Rotate Page to Landscape
+% \KOMAoptions{paper=landscape,pagesize}
+% \recalctypearea
+% % Draw the Background centered
+% \begin{tikzpicture}[remember picture,overlay]
+%     \node[anchor=center] at (current page.center) {\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{stundenplan}};
+% \end{tikzpicture}
+% \cleardoublepage
+% % Rotate Page back to Portrait
+% \KOMAoptions{paper=portrait,pagesize}
+% \recalctypearea
