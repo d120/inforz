@@ -1,9 +1,8 @@
+% Remove Headline and Footline
 \thispagestyle{empty}
-
-\begin{figure}
-    \centering
-    \includegraphics[angle=0,width=.8\linewidth]{stundenplan_cyberphase_de}
-    \caption{Stundenplan der Cyberphase}
-\end{figure}
-
+\todo{english version of the schedule}
+% Draw the Background centered
+\begin{tikzpicture}[remember picture,overlay]
+    \node[anchor=center] at (current page.center) {\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{stundenplan_master_de}};
+\end{tikzpicture}
 \cleardoublepage
