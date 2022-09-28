@@ -32,6 +32,15 @@
 \RequirePackage{xparse}
 \RequirePackage[fixed]{fontawesome5}
 \RequirePackage{csquotes}
+\input{tudacolors.def}
+\reversemarginpar
+\RequirePackage[
+    color=TUDa-3b,
+    textcolor=white,
+    textwidth=1.2cm,
+    textsize=small,
+    loadshadowlibrary,
+]{todonotes}
 
 
 %Einrückungen vor Absätzen aus
@@ -301,9 +310,9 @@
             %%--Workshop Infos--%%
 
             % Workshop Title
-            \addsec{
+            {\Large\bfseries\sffamily
                 \seq_item:Nn \l_inforz_tmp_seq {1}
-            }
+            }\normalfont\\
 
             % Authors
             \textbf{
