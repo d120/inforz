@@ -5,6 +5,7 @@
 % Ruben Deisenroth, Stand: 14.08.2022 - zusammenführen Verschiedener Versionen + expl3 rewrite
 
 % Pakete
+\RequirePackage{amssymb}
 \RequirePackage{ifthen}
 \RequirePackage{multicol}
 \RequirePackage{rotating}
@@ -213,9 +214,7 @@
 % 2: Beschreibung
 \newcommand{\checkbox}[2]{%
     \begin{itemize}
-
-        \item[\Square] \textbf{#1}
-
+        \item[\Square] \textbf{#1}\par
             \vspace{3mm}
             #2
     \end{itemize}
