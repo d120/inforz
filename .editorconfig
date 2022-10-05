@@ -10,9 +10,16 @@ end_of_line = lf
 charset = utf-8
 trim_trailing_whitespace = true
 insert_final_newline = true
-max_line_length = 130
 
-[*.yml]
-indent_style = space
+[*.{md,mf}]
+trim_trailing_whitespace = false
+
+[*.{yml,yaml}]
 indent_size = 2
 trim_trailing_whitespace = false
+
+[Makefile]
+indent_style = tab
+
+[{COPYING,LICENSE,NOTICE,*.{mf,xmp}}]
+indent_size = unset

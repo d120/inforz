@@ -5,6 +5,7 @@
 % Ruben Deisenroth, Stand: 14.08.2022 - zusammenführen Verschiedener Versionen + expl3 rewrite
 
 % Pakete
+\RequirePackage{amssymb}
 \RequirePackage{ifthen}
 \RequirePackage{multicol}
 \RequirePackage{rotating}
@@ -28,6 +29,22 @@
 \PassOptionsToPackage{hyphens}{url}
 \PassOptionsToPackage{colorlinks=true,linkcolor=black,urlcolor=black,pdfpagelayout=TwoColumnRight}{hyperref}
 \RequirePackage{hyperref}
+\RequirePackage{tikz}
+\RequirePackage{xparse}
+\RequirePackage[fixed]{fontawesome5}
+\RequirePackage{csquotes}
+\input{tudacolors.def}
+\reversemarginpar
+\RequirePackage[
+    color=TUDa-3b,
+    textcolor=white,
+    textwidth=1.2cm,
+    textsize=small,
+    loadshadowlibrary,
+]{todonotes}
+\RequirePackage{qrcode}
+\RequirePackage{caption}
+\RequirePackage{subcaption}
 
 
 %Einrückungen vor Absätzen aus
@@ -153,18 +170,24 @@
 % 2: Vorspann
 % 3: Text
 % 4: Autor
-\newcommand{\artikel}[4]{%
-    \addsec{#1}
-    \begin{multicols}{2}
-        \noindent\textbf{\sffamily{#2}}
-        \vspace{0.5cm}
-        \par
-        #3
-        \par
-        \begin{flushright}
-            \sffamily{#4}
-        \end{flushright}
-    \end{multicols}
+\DeclareDocumentCommand{\artikel}{s +m +m +m +m}{
+    %\begin{noindent}
+    \addsec{#2}
+    \bool_if:nF {#1} {
+        \begin{multicols}{2}
+    }
+    \noindent\textbf{\sffamily{#3}}
+    \vspace{0.5cm}
+    \par
+    #4
+    \par
+    \begin{flushright}
+        \sffamily{#5}
+    \end{flushright}
+    \bool_if:nF {#1} {
+        \end{multicols}
+    }
+    %\end{noindent}
 }
 
 % Eigenständiger Autor
@@ -194,9 +217,7 @@
 % 2: Beschreibung
 \newcommand{\checkbox}[2]{%
     \begin{itemize}
-
-        \item[\Square] \textbf{#1}
-
+        \item[\Square] \textbf{#1}\par
             \vspace{3mm}
             #2
     \end{itemize}
@@ -291,9 +312,9 @@
             %%--Workshop Infos--%%
 
             % Workshop Title
-            \addsec{
+            {\Large\bfseries\sffamily
                 \seq_item:Nn \l_inforz_tmp_seq {1}
-            }
+            }\normalfont\\
 
             % Authors
             \textbf{
